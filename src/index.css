@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-ink-soft font-sans;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif text-ink;
+  }
+
+  a {
+    @apply text-walnut underline-offset-4 hover:text-walnut-deep;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-caramel;
+  }
+}
