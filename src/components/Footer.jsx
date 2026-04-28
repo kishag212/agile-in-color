@@ -44,7 +44,11 @@ export default function Footer() {
               Stay in touch
             </h4>
             <p className="mt-3 text-sm text-cream-light/80">
-              Subscribe for program updates, events, and ways to get involved.
+              Have a question, idea, or want to get involved?{' '}
+              <Link to="/contact" className="text-walnut underline hover:text-walnut-deep">
+                Reach out directly
+              </Link>{' '}
+              — we'd love to hear from you.
             </p>
           </div>
         </div>
