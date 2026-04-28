@@ -3,9 +3,10 @@ import BrandMark from './BrandMark.jsx'
 
 const LINKS = [
   { to: '/about', label: 'About' },
+  { to: '/team', label: 'Team' },
+  { to: '/code-of-conduct', label: 'Code of Conduct' },
   { to: '/manifesto', label: 'Manifesto' },
   { to: '/programs', label: 'Programs' },
-  { to: '/team', label: 'Team' },
   { to: '/events', label: 'Events' },
   { to: '/membership', label: 'Membership' },
   { to: '/sponsor', label: 'Sponsor' },
