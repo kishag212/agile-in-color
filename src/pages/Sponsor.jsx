@@ -1,25 +1,18 @@
-// TODO: Phase B — wire all donate/sponsor buttons to real Stripe Checkout via a
-// Supabase Edge Function. For now, every call site passes a contextual message
-// to `handleDonate(message)` which surfaces a friendly "coming soon" alert.
-
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight, Lock } from 'lucide-react'
-
-function handleDonate(message) {
-  // TODO: Phase B — replace with real Stripe Checkout via Supabase Edge Function
-  window.alert(
-    `${message}\n\nStripe checkout is coming soon — we're wiring it up before launch. For now, please reach out via /contact and we'll take it from there.`
-  )
-}
+import { startCheckout } from '../lib/checkout'
+import { STRIPE_PRICE_IDS } from '../lib/stripeProducts'
 
 export default function Sponsor() {
+  const [coverFee, setCoverFee] = useState(false)
+
   return (
     <>
       <Hero />
-      <DonatePanel />
-      <SponsorTiers />
-      <ReimaginedSection />
+      <DonatePanel coverFee={coverFee} setCoverFee={setCoverFee} />
+      <SponsorTiers coverFee={coverFee} />
+      <ReimaginedSection coverFee={coverFee} />
       <ImpactStrip />
       <ClosingNote />
     </>
@@ -62,12 +55,16 @@ function Hero() {
 
 const PRESET_AMOUNTS = [25, 50, 100, 250, 500, 1000]
 
-function DonatePanel() {
+function DonatePanel({ coverFee, setCoverFee }) {
   const [selectedAmount, setSelectedAmount] = useState(50)
   const [customAmount, setCustomAmount] = useState('')
   const [isRecurring, setIsRecurring] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const effectiveAmount = customAmount ? Number(customAmount) || 0 : selectedAmount
+  const feeAmount = coverFee && effectiveAmount > 0
+    ? (effectiveAmount * 0.03).toFixed(2)
+    : null
 
   function pickAmount(amount) {
     setSelectedAmount(amount)
@@ -78,14 +75,23 @@ function DonatePanel() {
     setSelectedAmount(null)
   }
 
-  function onDonate() {
-    if (!effectiveAmount || effectiveAmount <= 0) {
-      window.alert('Please choose or enter an amount before continuing.')
+  const handleDonate = async () => {
+    const amount = customAmount ? parseFloat(customAmount) : selectedAmount
+    if (!amount || amount < 1) {
+      alert('Please enter a valid donation amount')
       return
     }
-    handleDonate(
-      `Donation: $${effectiveAmount} (${isRecurring ? 'monthly recurring' : 'one-time'}).`
-    )
+    try {
+      setIsLoading(true)
+      await startCheckout({
+        amountCents: Math.round(amount * 100),
+        recurring: isRecurring,
+        coverFee: coverFee,
+      })
+    } catch (err) {
+      alert(`Checkout error: ${err.message}`)
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -146,12 +152,42 @@ function DonatePanel() {
 
             <RecurringToggle isRecurring={isRecurring} setIsRecurring={setIsRecurring} />
 
+            <div
+              className="mb-2 flex cursor-pointer items-center gap-3 rounded-md bg-surface px-4 py-3"
+              onClick={() => setCoverFee(!coverFee)}
+            >
+              <div
+                className={`relative h-5 w-9 flex-shrink-0 rounded-full transition-colors ${
+                  coverFee ? 'bg-walnut' : 'bg-walnut/25'
+                }`}
+              >
+                <div
+                  className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${
+                    coverFee ? 'left-[18px]' : 'left-0.5'
+                  }`}
+                />
+              </div>
+              <label className="flex-1 cursor-pointer text-sm text-ink">
+                Cover the 3% processing fee so 100% goes to programming
+              </label>
+            </div>
+            {feeAmount && (
+              <p className="mb-4 text-xs text-ink-soft">
+                Adds about ${feeAmount} to your gift.
+              </p>
+            )}
+
             <button
               type="button"
-              onClick={onDonate}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-walnut py-4 text-base font-medium text-bg transition-colors hover:bg-walnut-deep"
+              onClick={handleDonate}
+              disabled={isLoading}
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-walnut py-4 text-base font-medium text-bg transition-colors hover:bg-walnut-deep disabled:opacity-60"
             >
-              {isRecurring ? 'Continue to monthly gift' : 'Continue to payment'}
+              {isLoading
+                ? 'Redirecting...'
+                : isRecurring
+                  ? 'Continue to monthly gift'
+                  : 'Continue to payment'}
               <ArrowRight size={16} />
             </button>
             <p className="mt-3.5 text-center text-[11px] text-ink-soft opacity-70">
@@ -217,6 +253,8 @@ function RecurringToggle({ isRecurring, setIsRecurring }) {
 const SPONSOR_TIERS = [
   {
     name: 'Bronze',
+    key: 'bronze',
+    tierName: 'Bronze Annual Sponsorship',
     amount: '$2,500',
     cadence: 'per year',
     items: [
@@ -236,6 +274,8 @@ const SPONSOR_TIERS = [
   },
   {
     name: 'Silver',
+    key: 'silver',
+    tierName: 'Silver Annual Sponsorship',
     amount: '$5,000',
     cadence: 'per year',
     items: [
@@ -255,6 +295,8 @@ const SPONSOR_TIERS = [
   },
   {
     name: 'Gold',
+    key: 'gold',
+    tierName: 'Gold Annual Sponsorship',
     amount: '$15,000',
     cadence: 'per year',
     items: [
@@ -275,7 +317,20 @@ const SPONSOR_TIERS = [
   },
 ]
 
-function SponsorTiers() {
+function SponsorTiers({ coverFee }) {
+  const handleSponsorTier = async (tierKey, tierName) => {
+    try {
+      await startCheckout({
+        priceId: STRIPE_PRICE_IDS[tierKey],
+        tierName,
+        mode: 'subscription',
+        coverFee: coverFee,
+      })
+    } catch (err) {
+      alert(`Checkout error: ${err.message}`)
+    }
+  }
+
   return (
     <section className="bg-surface px-9 py-14 md:py-16">
       <header className="mb-9 text-center">
@@ -291,7 +346,11 @@ function SponsorTiers() {
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-5 md:grid-cols-3">
         {SPONSOR_TIERS.map((tier) => (
-          <SponsorTierCard key={tier.name} tier={tier} />
+          <SponsorTierCard
+            key={tier.name}
+            tier={tier}
+            onSelect={() => handleSponsorTier(tier.key, tier.tierName)}
+          />
         ))}
       </div>
 
@@ -310,7 +369,7 @@ function SponsorTiers() {
   )
 }
 
-function SponsorTierCard({ tier }) {
+function SponsorTierCard({ tier, onSelect }) {
   return (
     <article
       className={`relative flex h-full flex-col rounded-xl p-7 ${tier.cardClass} ${
@@ -341,11 +400,7 @@ function SponsorTierCard({ tier }) {
       <div className="mt-auto pt-5">
         <button
           type="button"
-          onClick={() =>
-            handleDonate(
-              `Sponsorship inquiry: ${tier.name} tier (${tier.amount} ${tier.cadence}).`
-            )
-          }
+          onClick={onSelect}
           className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${tier.buttonClass}`}
         >
           Choose {tier.name}
@@ -358,37 +413,60 @@ function SponsorTierCard({ tier }) {
 const REIMAGINED_TIERS = [
   {
     title: 'Founding Partner',
+    key: 'founding_partner',
+    tierName: 'Reimagined Agility — Founding Partner',
     description:
       'Underwrite the entire event. Co-branded recognition on all materials. Closing remarks slot.',
     amount: '$26,692',
   },
   {
     title: 'Lunch Sponsor',
+    key: 'lunch_sponsor',
+    tierName: 'Reimagined Agility — Lunch Sponsor',
     description:
       'Catering for 120 — keeps participants fueled and connected during the longest stretch of the day.',
     amount: '$8,400',
   },
   {
     title: 'Beverage & Break Sponsor',
+    key: 'beverage_break',
+    tierName: 'Reimagined Agility — Beverage & Break Sponsor',
     description:
       'All-day coffee, tea, and the afternoon break that powers the back-half of the day.',
     amount: '$4,200',
   },
   {
     title: 'Facilitator Travel Sponsor',
+    key: 'facilitator_travel',
+    tierName: 'Reimagined Agility — Facilitator Travel Sponsor',
     description:
       "Cover one of our nine core facilitators' travel to the event. Choose your facilitator on confirmation.",
     amount: '$1,263',
   },
   {
     title: 'AI Readiness Cohort Fellow',
+    key: 'ai_readiness_fellow',
+    tierName: 'AI Readiness Cohort Fellow',
     description:
       "Sponsor one fellow's full participation in our flagship six-month cohort program.",
     amount: '$1,500',
   },
 ]
 
-function ReimaginedSection() {
+function ReimaginedSection({ coverFee }) {
+  const handleReimaginedTier = async (tierKey, tierName) => {
+    try {
+      await startCheckout({
+        priceId: STRIPE_PRICE_IDS[tierKey],
+        tierName,
+        mode: 'payment',
+        coverFee: coverFee,
+      })
+    } catch (err) {
+      alert(`Checkout error: ${err.message}`)
+    }
+  }
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-espresso to-[#1f1209] px-9 py-16 text-cream-light md:py-20">
       <ColorStripe />
@@ -414,7 +492,11 @@ function ReimaginedSection() {
 
         <ul className="mx-auto max-w-3xl">
           {REIMAGINED_TIERS.map((tier) => (
-            <ReimaginedTierRow key={tier.title} tier={tier} />
+            <ReimaginedTierRow
+              key={tier.title}
+              tier={tier}
+              onSelect={() => handleReimaginedTier(tier.key, tier.tierName)}
+            />
           ))}
         </ul>
       </div>
@@ -422,7 +504,7 @@ function ReimaginedSection() {
   )
 }
 
-function ReimaginedTierRow({ tier }) {
+function ReimaginedTierRow({ tier, onSelect }) {
   return (
     <li className="flex items-stretch gap-4 border-b border-wheat/15 py-4 last:border-b-0">
       <div className="flex-1">
@@ -437,11 +519,7 @@ function ReimaginedTierRow({ tier }) {
       <div className="self-center">
         <button
           type="button"
-          onClick={() =>
-            handleDonate(
-              `Reimagined Agility sponsorship: ${tier.title} — ${tier.amount}.`
-            )
-          }
+          onClick={onSelect}
           className="rounded-full bg-wheat px-5 py-2 text-xs font-medium text-espresso transition-colors hover:bg-cream-light"
         >
           Sponsor

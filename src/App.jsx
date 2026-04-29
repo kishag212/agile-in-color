@@ -9,6 +9,8 @@ import Programs from './pages/Programs.jsx'
 import Events from './pages/Events.jsx'
 import Membership from './pages/Membership.jsx'
 import Sponsor from './pages/Sponsor.jsx'
+import SponsorSuccess from './pages/SponsorSuccess.jsx'
+import SponsorCancel from './pages/SponsorCancel.jsx'
 import Contact from './pages/Contact.jsx'
 
 export default function App() {
@@ -24,6 +26,8 @@ export default function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/membership" element={<Membership />} />
         <Route path="/sponsor" element={<Sponsor />} />
+        <Route path="/sponsor/success" element={<SponsorSuccess />} />
+        <Route path="/sponsor/cancel" element={<SponsorCancel />} />
         <Route path="/contact" element={<Contact />} />
       </Route>
     </Routes>
