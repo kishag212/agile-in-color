@@ -14,6 +14,7 @@ export default function Sponsor() {
       <SponsorBenefits />
       <SponsorTiers coverFee={coverFee} />
       <ReimaginedSection coverFee={coverFee} />
+      <OtherWaysToGive />
       <ImpactStrip />
       <ClosingNote />
     </>
@@ -818,6 +819,113 @@ function ReimaginedTierRow({ tier, onSelect }) {
         </button>
       </div>
     </li>
+  )
+}
+
+function OtherWaysToGive() {
+  const treasurerEmail = 'treasurer@agileincolor.org'
+  const mailto = `mailto:${treasurerEmail}`
+
+  return (
+    <section className="bg-bg px-9 py-16 md:py-20">
+      <div className="mx-auto max-w-5xl">
+        <header className="mx-auto mb-12 max-w-2xl text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-walnut">Other ways to give</p>
+          <h2 className="mt-3 font-serif text-3xl font-normal leading-tight tracking-tight text-ink md:text-4xl">
+            Prefer not to use a <em className="font-medium text-walnut">credit card</em>?
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-ink-soft">
+            We accept Zelle and mailed checks. Contributions are tax-deductible to the fullest
+            extent allowed by law. Agile in Color is a 501(c)(3) nonprofit organization.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <article className="rounded-2xl border border-walnut/15 bg-surface p-8 shadow-sm">
+            <h3 className="font-serif text-2xl font-medium text-ink">Donate via Zelle</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft md:text-base">
+              Send your gift directly to our account using the Zelle app at your bank.
+            </p>
+
+            <dl className="my-4 rounded-lg bg-bg p-4 text-sm">
+              <dt className="text-xs uppercase tracking-wide text-ink-soft">Send to:</dt>
+              <dd className="mt-1 font-mono text-ink">
+                <a
+                  href={mailto}
+                  aria-label="Email Agile in Color treasurer"
+                  className="text-walnut underline hover:text-walnut-deep"
+                >
+                  {treasurerEmail}
+                </a>
+              </dd>
+              <dt className="mt-3 text-xs uppercase tracking-wide text-ink-soft">
+                Recipient name:
+              </dt>
+              <dd className="mt-1 font-medium text-ink">Agile in Color</dd>
+            </dl>
+
+            <figure className="my-5 flex flex-col items-center">
+              <img
+                src="/images/zelle-qr.jpg"
+                alt="Agile in Color Zelle QR code"
+                className="w-full max-w-[200px] rounded-md"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'
+                }}
+              />
+              <figcaption className="mt-2 text-xs text-ink-soft">
+                Scan with your bank's Zelle feature
+              </figcaption>
+            </figure>
+
+            <p className="mt-4 text-xs leading-relaxed text-ink-soft">
+              After sending, please email{' '}
+              <a
+                href={mailto}
+                aria-label="Email Agile in Color treasurer about your Zelle gift"
+                className="text-walnut underline hover:text-walnut-deep"
+              >
+                {treasurerEmail}
+              </a>{' '}
+              with your name, donation amount, and mailing address so we can send you a tax
+              receipt.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-walnut/15 bg-surface p-8 shadow-sm">
+            <h3 className="font-serif text-2xl font-medium text-ink">Donate by Mail</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft md:text-base">
+              We gratefully accept donations by check. Please make checks payable to Agile in
+              Color.
+            </p>
+
+            <dl className="my-4 rounded-lg bg-bg p-4 text-sm">
+              <dt className="text-xs uppercase tracking-wide text-ink-soft">
+                Make checks payable to:
+              </dt>
+              <dd className="mt-1 font-medium text-ink">Agile in Color</dd>
+            </dl>
+
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft md:text-base">
+              For our current mailing address, please email{' '}
+              <a
+                href={mailto}
+                aria-label="Email Agile in Color treasurer for mailing address"
+                className="text-walnut underline hover:text-walnut-deep"
+              >
+                {treasurerEmail}
+              </a>{' '}
+              and we will respond promptly with check delivery instructions.
+            </p>
+
+            <p className="mt-4 text-xs leading-relaxed text-ink-soft">
+              Please include your name, mailing address, and a note with your check so we can
+              send you a tax receipt.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
   )
 }
 
