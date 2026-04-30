@@ -11,6 +11,7 @@ export default function Sponsor() {
     <>
       <Hero />
       <DonatePanel coverFee={coverFee} setCoverFee={setCoverFee} />
+      <SponsorBenefits />
       <SponsorTiers coverFee={coverFee} />
       <ReimaginedSection coverFee={coverFee} />
       <ImpactStrip />
@@ -247,6 +248,297 @@ function RecurringToggle({ isRecurring, setIsRecurring }) {
       </span>
       <span className="text-sm text-ink">Make this a monthly recurring gift</span>
     </label>
+  )
+}
+
+const ANNUAL_TIER_HEADERS = [
+  { name: 'Bronze', amount: '$2,500/yr' },
+  { name: 'Silver', amount: '$5,000/yr' },
+  { name: 'Gold', amount: '$15,000/yr' },
+]
+
+const ANNUAL_BENEFITS = [
+  {
+    benefit: 'Logo on Agile in Color Sponsors page',
+    bronze: '✓',
+    silver: '✓',
+    gold: '✓ Featured',
+  },
+  {
+    benefit: 'Recognition across community channels (forum, social, future newsletter)',
+    bronze: '✓',
+    silver: '✓',
+    gold: '✓ Named',
+  },
+  {
+    benefit: 'Recognition at virtual community events',
+    bronze: '✓',
+    silver: '✓',
+    gold: '✓',
+  },
+  {
+    benefit: 'Annual Impact Report — sponsor recognition (beginning 2027)',
+    bronze: '✓',
+    silver: '✓',
+    gold: '✓ Full-page feature',
+  },
+  {
+    benefit: 'Annual Aggregated Insights Report (beginning 2027)',
+    bronze: '—',
+    silver: '✓',
+    gold: '✓',
+  },
+  {
+    benefit: 'Quarterly Community Trends Brief (beginning Q1 2027)',
+    bronze: '—',
+    silver: '✓',
+    gold: '✓',
+  },
+  {
+    benefit: 'Co-branded content opportunity (1 per year)',
+    bronze: '—',
+    silver: '—',
+    gold: '✓',
+  },
+  {
+    benefit: 'Speaking slot consideration at one community event',
+    bronze: '—',
+    silver: '—',
+    gold: '✓',
+  },
+  {
+    benefit: 'Custom recognition / partnership announcement',
+    bronze: '—',
+    silver: '—',
+    gold: '✓',
+  },
+]
+
+const REIMAGINED_RECOGNITION = [
+  {
+    title: 'Founding Partner',
+    amount: '$26,692',
+    benefits:
+      "Top billing on all event materials and signage; named in opening remarks; full event recognition; logo on event site; post-event aggregated insights report",
+  },
+  {
+    title: 'Lunch Sponsor',
+    amount: '$8,400',
+    benefits:
+      'Branded recognition at lunch service; signage during meal; named in program; logo on event website',
+  },
+  {
+    title: 'Beverage & Break Sponsor',
+    amount: '$4,200',
+    benefits:
+      'Branded recognition at coffee/refreshment service; signage; named in program',
+  },
+  {
+    title: 'Facilitator Travel Sponsor',
+    amount: '$1,263',
+    benefits: 'Recognition for funding facilitator travel; named in program',
+  },
+  {
+    title: 'AI Readiness Cohort Fellow',
+    amount: '$1,500',
+    benefits: 'Funds one cohort fellow; named in cohort materials and post-cohort report',
+  },
+]
+
+function SponsorBenefits() {
+  return (
+    <section className="bg-surface px-9 py-14 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        <header className="mb-10 text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-walnut">Sponsor recognition</p>
+          <h2 className="mt-3 font-serif text-3xl font-normal leading-tight tracking-tight text-ink md:text-5xl">
+            What sponsors <em className="font-medium text-walnut">receive</em>.
+          </h2>
+          <span
+            aria-hidden="true"
+            className="mx-auto mt-3 block h-[3px] w-[60px] rounded-full bg-honey"
+          />
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
+            Sponsorship enables Agile in Color to fund mission-aligned programming. In return,
+            sponsors receive recognition that aligns with our values and protects our community's
+            trust.
+          </p>
+        </header>
+
+        <AnnualBenefitsTable />
+
+        <ReimaginedRecognitionList />
+
+        <SponsorshipFinePrint />
+      </div>
+    </section>
+  )
+}
+
+function AnnualBenefitsTable() {
+  return (
+    <div className="mt-4">
+      <div className="hidden overflow-hidden rounded-xl border border-walnut/15 bg-bg md:block">
+        <table className="w-full border-collapse text-left">
+          <thead>
+            <tr className="border-b border-walnut/15 bg-bg">
+              <th className="w-[40%] px-6 py-5 text-xs font-medium uppercase tracking-[0.2em] text-ink-soft">
+                Annual benefit
+              </th>
+              {ANNUAL_TIER_HEADERS.map((tier) => (
+                <th
+                  key={tier.name}
+                  className="px-6 py-5 text-center align-bottom"
+                >
+                  <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-walnut">
+                    {tier.name}
+                  </p>
+                  <p className="mt-1 font-serif text-lg font-medium text-ink">
+                    {tier.amount}
+                  </p>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {ANNUAL_BENEFITS.map((row, idx) => (
+              <tr
+                key={row.benefit}
+                className={`border-b border-walnut/10 last:border-b-0 ${
+                  idx % 2 === 1 ? 'bg-surface/40' : ''
+                }`}
+              >
+                <td className="px-6 py-4 text-sm leading-relaxed text-ink-soft">
+                  {row.benefit}
+                </td>
+                <td className="px-6 py-4 text-center text-sm text-ink">
+                  <BenefitMark value={row.bronze} />
+                </td>
+                <td className="px-6 py-4 text-center text-sm text-ink">
+                  <BenefitMark value={row.silver} />
+                </td>
+                <td className="px-6 py-4 text-center text-sm text-ink">
+                  <BenefitMark value={row.gold} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 md:hidden">
+        {ANNUAL_TIER_HEADERS.map((tier) => {
+          const key = tier.name.toLowerCase()
+          return (
+            <article
+              key={tier.name}
+              className="rounded-xl border border-walnut/15 bg-bg p-6"
+            >
+              <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-walnut">
+                {tier.name}
+              </p>
+              <p className="mt-1 font-serif text-2xl font-medium text-ink">
+                {tier.amount}
+              </p>
+              <ul className="mt-5 space-y-3 text-sm leading-relaxed text-ink-soft">
+                {ANNUAL_BENEFITS.map((row) => (
+                  <li
+                    key={row.benefit}
+                    className="flex items-start gap-3 border-b border-walnut/10 pb-3 last:border-b-0 last:pb-0"
+                  >
+                    <span className="min-w-[16px] pt-0.5 text-ink">
+                      <BenefitMark value={row[key]} />
+                    </span>
+                    <span className="flex-1">{row.benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+function BenefitMark({ value }) {
+  if (value === '—') {
+    return <span className="text-ink-soft opacity-50">—</span>
+  }
+  if (value === '✓') {
+    return <span className="text-walnut">✓</span>
+  }
+  return (
+    <span className="inline-flex items-center justify-center text-xs font-medium text-walnut">
+      {value}
+    </span>
+  )
+}
+
+function ReimaginedRecognitionList() {
+  return (
+    <div className="mt-14">
+      <header className="mb-7 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-caramel-deep">
+          Event sponsorships
+        </p>
+        <h3 className="mt-3 font-serif text-2xl font-normal leading-tight tracking-tight text-ink md:text-3xl">
+          Reimagined Agility — <em className="font-medium text-walnut">recognition by tier</em>.
+        </h3>
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
+          Reimagined Agility is our flagship annual gathering. Event sponsorships are one-time
+          gifts supporting conference programming, hospitality, and member access.
+        </p>
+      </header>
+
+      <ul className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-walnut/15 bg-bg">
+        {REIMAGINED_RECOGNITION.map((tier) => (
+          <li
+            key={tier.title}
+            className="flex flex-col gap-3 border-b border-walnut/10 px-6 py-5 last:border-b-0 md:flex-row md:items-start md:gap-6"
+          >
+            <div className="md:w-[34%] md:flex-shrink-0">
+              <p className="font-serif text-lg font-medium text-ink md:text-xl">
+                {tier.title}
+              </p>
+              <p className="mt-1 font-serif text-base font-medium text-walnut">
+                {tier.amount}
+              </p>
+            </div>
+            <p className="flex-1 text-sm leading-relaxed text-ink-soft">
+              {tier.benefits}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function SponsorshipFinePrint() {
+  return (
+    <div className="mx-auto mt-12 max-w-3xl space-y-4 border-t border-walnut/15 pt-8 text-xs leading-relaxed text-ink-soft md:text-sm">
+      <p>
+        <strong className="text-walnut">A note on member privacy.</strong> Agile in Color does
+        not share member contact information, individual data, or directory access with
+        sponsors. All insights and trends reports are aggregated, anonymized, and themes-based —
+        never individual data. Our community's trust comes first.
+      </p>
+      <p>
+        <strong className="text-walnut">About reporting deliverables.</strong> Annual Impact
+        Reports, Aggregated Insights Reports, and Quarterly Community Trends Briefs begin in
+        2027 as we formalize our reporting infrastructure. 2026 sponsorships receive logo
+        placement, community channel recognition, and event recognition immediately, with
+        reporting benefits beginning in the 2027 reporting cycle.
+      </p>
+      <p>
+        <strong className="text-walnut">Qualified sponsorship recognition.</strong> Per IRS
+        guidance for 501(c)(3) organizations, sponsorship recognition consists of acknowledgment
+        of the sponsor's name, logo, and value-neutral descriptive information. Agile in Color
+        does not provide endorsements, comparative claims, or product advertising in exchange
+        for sponsorship.
+      </p>
+    </div>
   )
 }
 
