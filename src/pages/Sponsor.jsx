@@ -115,8 +115,8 @@ function DonatePanel({ coverFee, setCoverFee }) {
         </div>
 
         <div className="md:col-span-7">
-          <div className="rounded-xl border border-walnut/15 bg-bg p-7 md:p-8">
-            <div className="mb-5 flex items-center justify-between">
+          <div className="rounded-xl border border-walnut/15 bg-bg p-5 sm:p-6 md:p-8">
+            <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
               <h3 className="font-serif text-xl font-medium text-ink">Choose an amount</h3>
               <span className="flex items-center gap-1.5 text-[11px] tracking-wider text-ink-soft">
                 <Lock size={12} className="text-walnut" />
@@ -137,7 +137,7 @@ function DonatePanel({ coverFee, setCoverFee }) {
               >
                 Or enter custom amount
               </label>
-              <div className="flex items-center gap-2 rounded-md border border-walnut/20 bg-bg px-4 py-2.5 transition focus-within:border-walnut focus-within:ring-1 focus-within:ring-walnut">
+              <div className="flex min-h-[48px] items-center gap-2 rounded-md border border-walnut/20 bg-bg px-4 py-3 transition focus-within:border-walnut focus-within:ring-1 focus-within:ring-walnut">
                 <span className="font-serif text-lg text-walnut">$</span>
                 <input
                   id="custom_amount"
@@ -204,7 +204,7 @@ function DonatePanel({ coverFee, setCoverFee }) {
 
 function AmountPicker({ presets, selected, onPick }) {
   return (
-    <div className="mb-4 grid grid-cols-3 gap-2.5">
+    <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
       {presets.map((amount) => {
         const isSelected = selected === amount
         return (
@@ -212,7 +212,7 @@ function AmountPicker({ presets, selected, onPick }) {
             key={amount}
             type="button"
             onClick={() => onPick(amount)}
-            className={`cursor-pointer rounded-lg border-2 px-3 py-3.5 text-center font-serif text-lg font-medium transition-all ${
+            className={`flex min-h-[64px] cursor-pointer items-center justify-center rounded-xl border-2 px-3 py-4 text-center font-serif text-xl font-medium transition-all sm:text-2xl ${
               isSelected
                 ? 'border-walnut bg-walnut text-bg'
                 : 'border-walnut/20 bg-bg text-ink hover:border-walnut'
