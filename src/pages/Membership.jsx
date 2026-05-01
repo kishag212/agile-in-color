@@ -28,7 +28,7 @@ const ENGAGEMENT_OPTIONS = [
     value: 'community',
     title: 'Community Member',
     description:
-      'Join our community to learn, network, attend events, and stay connected with fellow professionals of color in agile.',
+      'Join our community to learn, network, attend events, and stay connected with fellow professionals of color in Agile.',
   },
   {
     value: 'committee',
