@@ -177,7 +177,7 @@ const EVENTS = [
     eyebrow: 'Conference · Washington, D.C.',
     title: 'Agile 2026',
     body:
-      "The flagship gathering of the agile community. Find Agile in Color in the nation's capital for sessions, panels, and our hospitality space.",
+      "The flagship gathering of the agile community. Find Agile in Color in the nation's capital for sessions, panels, and our members' night out in DC.",
   },
 ]
 

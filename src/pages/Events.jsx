@@ -64,19 +64,19 @@ function CampaignBand() {
         </h2>
         <p className="mt-4 text-base leading-relaxed opacity-90 md:text-lg">
           Throughout 2026, Agile in Color is bringing one essential conversation — Reimagined
-          Agility in an AI World — to three of the field's most important venues. Vancouver
-          introduces the framework. AfroTech expands the audience. Agile 2026 is where the
-          conversation becomes a movement.
+          Agility in an AI World — to the field's most important venues, from the Global Scrum
+          Gathering in Vancouver to AfroTech. And at Agile 2026, we're gathering our members for
+          a night out in DC.
         </p>
         <p className="mt-5 text-sm leading-relaxed opacity-80 md:text-base">
-          The Agile 2026 Open Space is funding-dependent. Help us bring it to life.
+          The Members' Night Out is funding-dependent. Help us seat 40 members for free.
         </p>
         <div className="mt-5 flex justify-center">
           <Link
             to="/sponsor"
             className="inline-flex items-center gap-2 rounded-full bg-wheat px-6 py-3 text-sm font-medium text-espresso no-underline transition-colors hover:bg-honey"
           >
-            Fund the Open Space
+            Fund the Members' Night Out
             <ArrowUpRight size={16} />
           </Link>
         </div>
@@ -119,11 +119,12 @@ const UPCOMING_EVENTS = [
     dateBig: 'Jul 26–28',
     dateSmall: '2026',
     accentClass: 'text-[#b8843e]',
-    eyebrow: 'Conference · National Harbor, MD',
-    title: 'Agile 2026 Open Space',
+    eyebrow: 'Community · Washington, DC',
+    title: "Members' Night Out",
     body:
-      "Our flagship event — a dedicated, participant-driven Open Space at the Gaylord National Resort during Agile Alliance's Agile 2026. Status: actively raising funds.",
-    sessionTitle: 'Reimagined Agility in an AI World with Diverse Voices',
+      "A gathering for Agile in Color members during Agile 2026 — dinner and drinks at a Black-owned restaurant and bar in DC. Donations cover the night so members attend free. Status: actively raising funds.",
+    sessionLabel: 'The gathering',
+    sessionTitle: 'Members of the community, together, off the conference floor',
   },
 ]
 
@@ -157,6 +158,7 @@ function EventCard({
   title,
   body,
   sessionTitle,
+  sessionLabel = 'Session',
 }) {
   return (
     <article
@@ -186,7 +188,7 @@ function EventCard({
         <div className="mt-4">
           <div aria-hidden="true" className="mb-3 h-px bg-ink/10" />
           <p className={`text-xs font-medium uppercase tracking-widest ${accentClass}`}>
-            Session
+            {sessionLabel}
           </p>
           <p className="font-serif text-sm italic text-ink">{sessionTitle}</p>
         </div>

@@ -13,7 +13,7 @@ export default function Sponsor() {
       <DonatePanel coverFee={coverFee} setCoverFee={setCoverFee} />
       <SponsorBenefits />
       <SponsorTiers coverFee={coverFee} />
-      <ReimaginedSection coverFee={coverFee} />
+      <MeetupSection coverFee={coverFee} />
       <OtherWaysToGive />
       <ImpactStrip />
       <ClosingNote />
@@ -315,34 +315,23 @@ const ANNUAL_BENEFITS = [
   },
 ]
 
-const REIMAGINED_RECOGNITION = [
+const MEETUP_RECOGNITION = [
   {
-    title: 'Founding Partner',
-    amount: '$26,692',
+    title: 'Host the Night',
+    amount: '$1,000',
     benefits:
-      "Top billing on all event materials and signage; named in opening remarks; full event recognition; logo on event site; post-event aggregated insights report",
+      'Co-host billing for the evening; named recognition at the gathering and in our thank-you post; underwrites food and drink for a full table of members',
   },
   {
-    title: 'Lunch Sponsor',
-    amount: '$8,400',
+    title: 'Sponsor the Table',
+    amount: '$250',
     benefits:
-      'Branded recognition at lunch service; signage during meal; named in program; logo on event website',
+      'Covers appetizers and a round for a group of members; named in our community thank-you',
   },
   {
-    title: 'Beverage & Break Sponsor',
-    amount: '$4,200',
-    benefits:
-      'Branded recognition at coffee/refreshment service; signage; named in program',
-  },
-  {
-    title: 'Facilitator Travel Sponsor',
-    amount: '$1,263',
-    benefits: 'Recognition for funding facilitator travel; named in program',
-  },
-  {
-    title: 'AI Readiness Cohort Fellow',
-    amount: '$1,500',
-    benefits: 'Funds one cohort fellow; named in cohort materials and post-cohort report',
+    title: 'Buy a Seat',
+    amount: '$75',
+    benefits: "Covers one member's food and first drink so they can attend for free",
   },
 ]
 
@@ -368,7 +357,7 @@ function SponsorBenefits() {
 
         <AnnualBenefitsTable />
 
-        <ReimaginedRecognitionList />
+        <MeetupRecognitionList />
 
         <SponsorshipFinePrint />
       </div>
@@ -476,24 +465,25 @@ function BenefitMark({ value }) {
   )
 }
 
-function ReimaginedRecognitionList() {
+function MeetupRecognitionList() {
   return (
     <div className="mt-14">
       <header className="mb-7 text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-caramel-deep">
-          Event sponsorships
+          Members' Night Out
         </p>
         <h3 className="mt-3 font-serif text-2xl font-normal leading-tight tracking-tight text-ink md:text-3xl">
-          Reimagined Agility — <em className="font-medium text-walnut">recognition by tier</em>.
+          Fund the night — <em className="font-medium text-walnut">recognition by gift</em>.
         </h3>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
-          Reimagined Agility is our flagship annual gathering. Event sponsorships are one-time
-          gifts supporting conference programming, hospitality, and member access.
+          A one-night gathering for Agile in Color members at a Black-owned restaurant during
+          Agile 2026. Gifts are one-time and cover food, drink, and the space so members attend
+          free.
         </p>
       </header>
 
       <ul className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-walnut/15 bg-bg">
-        {REIMAGINED_RECOGNITION.map((tier) => (
+        {MEETUP_RECOGNITION.map((tier) => (
           <li
             key={tier.title}
             className="flex flex-col gap-3 border-b border-walnut/10 px-6 py-5 last:border-b-0 md:flex-row md:items-start md:gap-6"
@@ -703,51 +693,35 @@ function SponsorTierCard({ tier, onSelect }) {
   )
 }
 
-const REIMAGINED_TIERS = [
+const MEETUP_TIERS = [
   {
-    title: 'Founding Partner',
-    key: 'founding_partner',
-    tierName: 'Reimagined Agility — Founding Partner',
+    title: 'Buy a Seat',
+    key: 'seat',
+    tierName: "Members' Night Out — Buy a Seat",
     description:
-      'Underwrite the entire event. Co-branded recognition on all materials. Closing remarks slot.',
-    amount: '$26,692',
+      "Covers one member's food and first drink so they can walk in and belong, no cost to them.",
+    amount: '$75',
   },
   {
-    title: 'Lunch Sponsor',
-    key: 'lunch_sponsor',
-    tierName: 'Reimagined Agility — Lunch Sponsor',
+    title: 'Sponsor the Table',
+    key: 'table',
+    tierName: "Members' Night Out — Sponsor the Table",
     description:
-      'Catering for 120 — keeps participants fueled and connected during the longest stretch of the day.',
-    amount: '$8,400',
+      'Appetizers and a round for a group — the part of the night where the real conversations happen.',
+    amount: '$250',
   },
   {
-    title: 'Beverage & Break Sponsor',
-    key: 'beverage_break',
-    tierName: 'Reimagined Agility — Beverage & Break Sponsor',
+    title: 'Host the Night',
+    key: 'host',
+    tierName: "Members' Night Out — Host the Night",
     description:
-      'All-day coffee, tea, and the afternoon break that powers the back-half of the day.',
-    amount: '$4,200',
-  },
-  {
-    title: 'Facilitator Travel Sponsor',
-    key: 'facilitator_travel',
-    tierName: 'Reimagined Agility — Facilitator Travel Sponsor',
-    description:
-      "Cover one of our nine core facilitators' travel to the event. Choose your facilitator on confirmation.",
-    amount: '$1,263',
-  },
-  {
-    title: 'AI Readiness Cohort Fellow',
-    key: 'ai_readiness_fellow',
-    tierName: 'AI Readiness Cohort Fellow',
-    description:
-      "Sponsor one fellow's full participation in our flagship six-month cohort program.",
-    amount: '$1,500',
+      'Co-host the evening with named recognition, and underwrite food and drink for a full table of members.',
+    amount: '$1,000',
   },
 ]
 
-function ReimaginedSection({ coverFee }) {
-  const handleReimaginedTier = async (tierKey, tierName) => {
+function MeetupSection({ coverFee }) {
+  const handleMeetupTier = async (tierKey, tierName) => {
     try {
       await startCheckout({
         priceId: STRIPE_PRICE_IDS[tierKey],
@@ -771,33 +745,38 @@ function ReimaginedSection({ coverFee }) {
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="mb-9">
           <span className="inline-block rounded-full bg-wheat/15 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-wheat">
-            Flagship · Agile 2026
+            Community · Agile 2026
           </span>
           <h2 className="mt-4 font-serif text-3xl font-normal leading-tight tracking-tight text-cream-light md:text-5xl">
-            Sponsor <em className="font-medium text-wheat">Reimagined Agility</em>.
+            Members' <em className="font-medium text-wheat">Night Out</em>.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed opacity-90 md:text-lg">
-            An Open Space at Agile 2026 (July 26–28, National Harbor, MD) — our flagship 2026
-            event. We need to raise $26,692 to fund facilitator travel, hotel catering for 120,
-            and event programming. Pick a piece. Make it happen.
+            During Agile 2026 (July 26–28, National Harbor, MD), we're taking Agile in Color
+            members out to a Black-owned restaurant and bar in DC — dinner, drinks, and the kind
+            of connection that carries people through a big conference. We're raising $4,000 to
+            seat 40 members for free. Pick a piece. Pull up a chair.
           </p>
         </div>
 
         <ul className="mx-auto max-w-3xl">
-          {REIMAGINED_TIERS.map((tier) => (
-            <ReimaginedTierRow
+          {MEETUP_TIERS.map((tier) => (
+            <MeetupTierRow
               key={tier.title}
               tier={tier}
-              onSelect={() => handleReimaginedTier(tier.key, tier.tierName)}
+              onSelect={() => handleMeetupTier(tier.key, tier.tierName)}
             />
           ))}
         </ul>
+        <p className="mx-auto mt-6 max-w-3xl text-xs italic leading-relaxed text-cream-light/70">
+          Prefer to give any amount? Use the donation panel at the top of this page — every
+          dollar goes toward the night.
+        </p>
       </div>
     </section>
   )
 }
 
-function ReimaginedTierRow({ tier, onSelect }) {
+function MeetupTierRow({ tier, onSelect }) {
   return (
     <li className="flex items-stretch gap-4 border-b border-wheat/15 py-4 last:border-b-0">
       <div className="flex-1">
@@ -930,9 +909,9 @@ function OtherWaysToGive() {
 }
 
 const IMPACT_STATS = [
-  { amount: '$250', body: 'Funds one Share Your Story conversation session' },
-  { amount: '$1,500', body: 'Sponsors one fellow in the AI Readiness Cohort' },
-  { amount: '$5,000', body: 'Funds a year of mentorship matching for one cohort' },
+  { amount: '$75', body: "Buys one member's seat at the Agile 2026 Members' Night Out" },
+  { amount: '$250', body: 'Sponsors appetizers and a round for a table of members' },
+  { amount: '$1,000', body: 'Hosts the night for a full table, with named recognition' },
 ]
 
 function ImpactStrip() {
@@ -941,8 +920,8 @@ function ImpactStrip() {
       <div className="mx-auto max-w-4xl">
         <p className="text-xs uppercase tracking-[0.3em] text-walnut">Your impact</p>
         <h2 className="mt-3 font-serif text-3xl font-normal leading-tight tracking-tight text-ink md:text-4xl">
-          Your gift prepares our community to lead through the AI shift —{' '}
-          <em className="font-medium text-walnut">and whatever comes after it</em>.
+          Your gift puts a member in the room —{' '}
+          <em className="font-medium text-walnut">and a seat at the table</em>.
         </h2>
         <div className="mt-9 grid grid-cols-1 items-start gap-7 md:grid-cols-3">
           {IMPACT_STATS.map((stat) => (

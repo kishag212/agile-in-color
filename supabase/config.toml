@@ -20,3 +20,11 @@ entrypoint = "./functions/stripe-webhook/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/stripe-webhook/*.html" ]
+
+[functions.send-welcome-email]
+enabled = true
+# verify_jwt is off because this is called by a database webhook, not a logged-in
+# user. It is protected instead by the WEBHOOK_SECRET shared-secret header.
+verify_jwt = false
+import_map = "./functions/send-welcome-email/deno.json"
+entrypoint = "./functions/send-welcome-email/index.ts"

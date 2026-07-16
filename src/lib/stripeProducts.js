@@ -3,12 +3,13 @@
 // IMPORTANT: These are LIVE MODE price IDs.
 
 export const STRIPE_PRICE_IDS = {
+  // Annual organizational sponsorships (unchanged)
   bronze: 'price_1__price_1TRvWAJ36ImLVnHott8ksyvD',
   silver: 'price_1__price_1TRvXFJ36ImLVnHoHEBQiFAV',
   gold: 'price_1__price_1TRvYRJ36ImLVnHohLAyU225',
-  founding_partner: 'price_1__price_1TRvZMJ36ImLVnHoohiaakSB',
-  lunch_sponsor: 'price_1__price_1TRvZuJ36ImLVnHoN5wUQOiH',
-  beverage_break: 'price_1__price_1TRvaSJ36ImLVnHoNirxDTYy',
-  facilitator_travel: 'price_1__price_1TRvbNJ36ImLVnHoBVa5MYXS',
-  ai_readiness_fellow: 'price_1__price_1TRvbuJ36ImLVnHoeziJgYiL',
+
+  // Members' Night Out at Agile 2026 — one-time gifts (LIVE mode).
+  seat: 'price_1TthXiJ36ImLVnHogVzJ57xO', // $75 — Buy a Seat
+  table: 'price_1TthYzJ36ImLVnHoBnD3CAca', // $250 — Sponsor the Table
+  host: 'price_1TthaaJ36ImLVnHog5sEtQ9e', // $1,000 — Host the Night
 };

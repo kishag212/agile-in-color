@@ -114,11 +114,9 @@ function DarkDivider() {
 }
 
 const TIERS = [
-  { label: 'Founding partner — full event funding', amount: '$26,692' },
-  { label: 'Lunch sponsor (catering for 120)', amount: '$8,400' },
-  { label: 'Beverage & break sponsor', amount: '$4,200' },
-  { label: 'Facilitator travel sponsor (1 of 9)', amount: '$1,263' },
-  { label: 'Conference scholarship for 1 attendee', amount: '$100' },
+  { label: 'Buy a Seat — one member’s food & first drink', amount: '$75' },
+  { label: 'Sponsor the Table — apps & a round for a group', amount: '$250' },
+  { label: 'Host the Night — a full table, named recognition', amount: '$1,000' },
 ]
 
 function FlagshipReimagined() {
@@ -128,29 +126,27 @@ function FlagshipReimagined() {
         <div className="grid grid-cols-1 items-start gap-9 md:grid-cols-12">
           <div className="md:col-span-7">
             <span className="inline-block rounded-full bg-espresso/15 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-espresso">
-              Flagship · Agile 2026
+              Community · Agile 2026
             </span>
             <h2 className="mt-4 font-serif text-3xl font-normal leading-tight tracking-tight text-espresso md:text-5xl">
-              Reimagined Agility{' '}
-              <em className="font-medium text-walnut">in an AI World</em> with Diverse Voices
+              Members' <em className="font-medium text-walnut">Night Out</em> in DC
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink md:text-lg">
-              A dedicated Open Space event at Agile 2026 — July 26–28, 2026 at Gaylord National
-              Resort, National Harbor, MD. Designed as a participant-driven, self-organizing
-              forum where 50–100 agile practitioners from underrepresented communities and their
-              allies will co-create the agenda around one central question:
+              During Agile 2026 — July 26–28, 2026 at the Gaylord National Resort, National
+              Harbor, MD — we're taking Agile in Color members out to a Black-owned restaurant
+              and bar in DC. Dinner, drinks, and the kind of connection that carries people
+              through a big conference.
             </p>
             <p className="mt-4 font-serif text-base italic leading-snug text-espresso md:text-xl">
-              What does it look, feel, and sound like when Agile truly includes everyone?
+              No one should navigate a room that big alone.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ink-soft md:text-base">
-              Nine Agile in Color core members will facilitate. The day will surface real,
-              unfiltered insight from voices that rarely shape the room — and Agile in Color will
-              publish a post-event summary so the conversation extends beyond the day itself.
+              Donations cover food, drink, and the space so members attend free. Our goal is
+              $4,000 to seat 40. Whatever's left over seeds next year's gathering.
             </p>
 
             <p className="mt-6 text-xs font-medium uppercase tracking-[0.3em] text-walnut">
-              Sponsorship tiers
+              Ways to give
             </p>
             <ul className="mt-3">
               {TIERS.map((t, i) => (
@@ -171,25 +167,25 @@ function FlagshipReimagined() {
 
           <div className="md:col-span-5">
             <div className="rounded-lg border border-espresso/15 bg-bg p-6 md:p-7">
-              <LightStatRow eyebrow="Funding goal" value="$26,692" />
+              <LightStatRow eyebrow="Funding goal" value="$4,000" />
               <LightDivider />
-              <LightStatRow eyebrow="Event date" value="July 26–28, 2026" />
+              <LightStatRow eyebrow="Conference dates" value="July 26–28, 2026" />
               <LightDivider />
-              <LightStatRow eyebrow="Capacity" value="50–100 participants" />
+              <LightStatRow eyebrow="Members seated" value="40" />
               <LightDivider />
-              <LightStatRow eyebrow="Facilitators" value="9 core members" />
+              <LightStatRow eyebrow="Give from" value="$75 / seat" />
             </div>
             <div className="mt-4">
               <Link
                 to="/sponsor"
                 className="inline-flex items-center gap-2 rounded-full bg-espresso px-6 py-3 text-sm font-medium text-cream-light no-underline transition-colors hover:bg-walnut-deep"
               >
-                Become a founding partner
+                Fund the night
                 <ArrowUpRight size={16} />
               </Link>
             </div>
             <p className="mt-3 text-xs italic text-ink-soft">
-              Status: actively raising — your gift makes this happen.
+              Status: actively raising — your gift buys a seat at the table.
             </p>
           </div>
         </div>
