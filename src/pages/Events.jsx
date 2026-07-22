@@ -69,7 +69,7 @@ function CampaignBand() {
           a night out in DC.
         </p>
         <p className="mt-5 text-sm leading-relaxed opacity-80 md:text-base">
-          The Members' Night Out is funding-dependent. Help us seat 40 members for free.
+          The Members' Night Out is funding-dependent. Help us cover 20 members for free.
         </p>
         <div className="mt-5 flex justify-center">
           <Link
@@ -116,15 +116,15 @@ const UPCOMING_EVENTS = [
     borderClass: 'border-l-[#b8843e]',
     status: 'FUNDING DEPENDENT',
     statusClass: 'bg-wheat/30 text-walnut',
-    dateBig: 'Jul 26–28',
+    dateBig: 'Jul 27',
     dateSmall: '2026',
     accentClass: 'text-[#b8843e]',
     eyebrow: 'Community · Washington, DC',
     title: "Members' Night Out",
     body:
-      "A gathering for Agile in Color members during Agile 2026 — dinner and drinks at a Black-owned restaurant and bar in DC. Donations cover the night so members attend free. Status: actively raising funds.",
-    sessionLabel: 'The gathering',
-    sessionTitle: 'Members of the community, together, off the conference floor',
+      "A members' happy hour during Agile 2026 at The Brass Tap, a Black-owned bar in DC. Monday, July 27, 5:30 to 7:30 PM. Donations cover drinks and food so members attend free. Status: actively raising funds.",
+    sessionLabel: 'When & where',
+    sessionTitle: 'Mon, July 27 · 5:30–7:30 PM · The Brass Tap, DC',
   },
 ]
 

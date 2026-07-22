@@ -132,17 +132,16 @@ function FlagshipReimagined() {
               Members' <em className="font-medium text-walnut">Night Out</em> in DC
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink md:text-lg">
-              During Agile 2026 — July 26–28, 2026 at the Gaylord National Resort, National
-              Harbor, MD — we're taking Agile in Color members out to a Black-owned restaurant
-              and bar in DC. Dinner, drinks, and the kind of connection that carries people
-              through a big conference.
+              During Agile 2026, we're taking Agile in Color members out to The Brass Tap, a
+              Black-owned bar in DC, on Monday, July 27 from 5:30 to 7:30 PM. Drinks, apps, and
+              the kind of connection that carries people through a big conference.
             </p>
             <p className="mt-4 font-serif text-base italic leading-snug text-espresso md:text-xl">
               No one should navigate a room that big alone.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ink-soft md:text-base">
-              Donations cover food, drink, and the space so members attend free. Our goal is
-              $4,000 to seat 40. Whatever's left over seeds next year's gathering.
+              Donations cover drinks and food so members attend free. Our goal is $1,500 to
+              cover 20 members. Whatever's left over seeds next year's gathering.
             </p>
 
             <p className="mt-6 text-xs font-medium uppercase tracking-[0.3em] text-walnut">
@@ -167,13 +166,13 @@ function FlagshipReimagined() {
 
           <div className="md:col-span-5">
             <div className="rounded-lg border border-espresso/15 bg-bg p-6 md:p-7">
-              <LightStatRow eyebrow="Funding goal" value="$4,000" />
+              <LightStatRow eyebrow="Funding goal" value="$1,500" />
               <LightDivider />
-              <LightStatRow eyebrow="Conference dates" value="July 26–28, 2026" />
+              <LightStatRow eyebrow="Date" value="Mon, July 27" />
               <LightDivider />
-              <LightStatRow eyebrow="Members seated" value="40" />
+              <LightStatRow eyebrow="Time" value="5:30–7:30 PM" />
               <LightDivider />
-              <LightStatRow eyebrow="Give from" value="$75 / seat" />
+              <LightStatRow eyebrow="Members covered" value="20" />
             </div>
             <div className="mt-4">
               <Link

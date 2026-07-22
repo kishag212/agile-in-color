@@ -476,8 +476,8 @@ function MeetupRecognitionList() {
           Fund the night — <em className="font-medium text-walnut">recognition by gift</em>.
         </h3>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
-          A one-night gathering for Agile in Color members at a Black-owned restaurant during
-          Agile 2026. Gifts are one-time and cover food, drink, and the space so members attend
+          A members' happy hour at The Brass Tap in DC on Monday, July 27 (5:30 to 7:30 PM)
+          during Agile 2026. Gifts are one-time and cover drinks and food so members attend
           free.
         </p>
       </header>
@@ -751,10 +751,10 @@ function MeetupSection({ coverFee }) {
             Members' <em className="font-medium text-wheat">Night Out</em>.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed opacity-90 md:text-lg">
-            During Agile 2026 (July 26–28, National Harbor, MD), we're taking Agile in Color
-            members out to a Black-owned restaurant and bar in DC — dinner, drinks, and the kind
-            of connection that carries people through a big conference. We're raising $4,000 to
-            seat 40 members for free. Pick a piece. Pull up a chair.
+            During Agile 2026, we're taking Agile in Color members out to The Brass Tap, a
+            Black-owned bar in DC, on Monday, July 27 from 5:30 to 7:30 PM. Drinks, apps, and the
+            kind of connection that carries people through a big conference. We're raising $1,500
+            to cover 20 members so they can walk in free. Pick a piece, pull up a chair.
           </p>
         </div>
 
