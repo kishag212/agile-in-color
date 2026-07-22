@@ -69,7 +69,7 @@ function CampaignBand() {
           a night out in DC.
         </p>
         <p className="mt-5 text-sm leading-relaxed opacity-80 md:text-base">
-          The Members' Night Out is funding-dependent. Help us cover 20 members for free.
+          Join us at The Brass Tap, and help us cover 20 members so they can join for free.
         </p>
         <div className="mt-5 flex justify-center">
           <Link
@@ -114,15 +114,13 @@ const UPCOMING_EVENTS = [
   },
   {
     borderClass: 'border-l-[#b8843e]',
-    status: 'FUNDING DEPENDENT',
-    statusClass: 'bg-wheat/30 text-walnut',
     dateBig: 'Jul 27',
     dateSmall: '2026',
     accentClass: 'text-[#b8843e]',
     eyebrow: 'Community · Washington, DC',
     title: "Members' Night Out",
     body:
-      "A members' happy hour during Agile 2026 at The Brass Tap, a Black-owned bar in DC. Monday, July 27, 5:30 to 7:30 PM. Donations cover drinks and food so members attend free. Status: actively raising funds.",
+      "A members' happy hour during Agile 2026 at The Brass Tap, a Black-owned bar in DC. Monday, July 27, 5:30 to 7:30 PM. Come connect with your community off the conference floor.",
     sessionLabel: 'When & where',
     sessionTitle: 'Mon, July 27 · 5:30–7:30 PM · The Brass Tap, DC',
   },
@@ -165,13 +163,15 @@ function EventCard({
       className={`flex h-full flex-col overflow-hidden rounded-lg border-l-4 bg-surface ${borderClass}`}
     >
       <div className="flex h-full flex-col p-7">
-        <div className="flex justify-end">
-          <span
-            className={`inline-block rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest ${statusClass}`}
-          >
-            {status}
-          </span>
-        </div>
+        {status && (
+          <div className="flex justify-end">
+            <span
+              className={`inline-block rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest ${statusClass}`}
+            >
+              {status}
+            </span>
+          </div>
+        )}
         <div className="mt-3 flex items-baseline gap-2">
           <span className="font-serif text-2xl font-medium leading-none text-ink">{dateBig}</span>
           <span className="text-sm text-ink-soft">{dateSmall}</span>
