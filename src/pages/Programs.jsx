@@ -114,7 +114,6 @@ function DarkDivider() {
 }
 
 const TIERS = [
-  { label: 'Buy a Seat — one member’s food & first drink', amount: '$75' },
   { label: 'Sponsor the Table — apps & a round for a group', amount: '$250' },
   { label: 'Host the Night — a full table, named recognition', amount: '$1,000' },
 ]

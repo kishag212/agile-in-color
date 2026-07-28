@@ -327,11 +327,6 @@ const MEETUP_RECOGNITION = [
     benefits:
       'Covers appetizers and a round for a group of members; named in our community thank-you',
   },
-  {
-    title: 'Buy a Seat',
-    amount: '$75',
-    benefits: "Covers one member's food and first drink so they can attend for free",
-  },
 ]
 
 function SponsorBenefits() {
@@ -692,14 +687,6 @@ function SponsorTierCard({ tier, onSelect }) {
 
 const MEETUP_TIERS = [
   {
-    title: 'Buy a Seat',
-    key: 'seat',
-    tierName: "Members' Night Out — Buy a Seat",
-    description:
-      "Covers one member's food and first drink so they can walk in and belong, no cost to them.",
-    amount: '$75',
-  },
-  {
     title: 'Sponsor the Table',
     key: 'table',
     tierName: "Members' Night Out — Sponsor the Table",
@@ -906,7 +893,7 @@ function OtherWaysToGive() {
 }
 
 const IMPACT_STATS = [
-  { amount: '$75', body: "Buys one member's seat at the Agile 2026 Members' Night Out" },
+  { amount: '$75', body: "Covers one member's food and drinks for the night" },
   { amount: '$250', body: 'Sponsors appetizers and a round for a table of members' },
   { amount: '$1,000', body: 'Hosts the night for a full table, with named recognition' },
 ]
