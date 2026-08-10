@@ -131,16 +131,17 @@ function FlagshipReimagined() {
               Members' <em className="font-medium text-walnut">Night Out</em> in DC
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink md:text-lg">
-              During Agile 2026, we're taking Agile in Color members out to The Brass Tap, a
-              Black-owned bar in DC, on Monday, July 27 from 5:30 to 7:30 PM. Drinks, apps, and
-              the kind of connection that carries people through a big conference.
+              On Monday, July 27, during Agile 2026, we took Agile in Color members out to The
+              Brass Tap, a Black-owned bar in DC, for our first Members' Night Out. Drinks, apps,
+              and the kind of connection that carries people through a big conference.
             </p>
             <p className="mt-4 font-serif text-base italic leading-snug text-espresso md:text-xl">
               No one should navigate a room that big alone.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ink-soft md:text-base">
-              Donations cover drinks and food so members attend free. Our goal is $1,500 to
-              cover 20 members. Whatever's left over seeds next year's gathering.
+              The venue was free, so donations go straight to the tab. We're still closing a
+              $1,500 gap to cover the members who came, and whatever's left over seeds next
+              year's gathering.
             </p>
 
             <p className="mt-6 text-xs font-medium uppercase tracking-[0.3em] text-walnut">
@@ -178,12 +179,12 @@ function FlagshipReimagined() {
                 to="/sponsor"
                 className="inline-flex items-center gap-2 rounded-full bg-espresso px-6 py-3 text-sm font-medium text-cream-light no-underline transition-colors hover:bg-walnut-deep"
               >
-                Fund the night
+                Help cover it
                 <ArrowUpRight size={16} />
               </Link>
             </div>
             <p className="mt-3 text-xs italic text-ink-soft">
-              Status: actively raising — your gift buys a seat at the table.
+              We hosted it. Your gift helps us cover the cost.
             </p>
           </div>
         </div>

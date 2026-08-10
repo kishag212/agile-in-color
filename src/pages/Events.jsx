@@ -65,11 +65,11 @@ function CampaignBand() {
         <p className="mt-4 text-base leading-relaxed opacity-90 md:text-lg">
           Throughout 2026, Agile in Color is bringing one essential conversation — Reimagined
           Agility in an AI World — to the field's most important venues, from the Global Scrum
-          Gathering in Vancouver to AfroTech. And at Agile 2026, we're gathering our members for
-          a night out in DC.
+          Gathering in Vancouver to AfroTech. And at Agile 2026, we gathered our members for a
+          night out in DC.
         </p>
         <p className="mt-5 text-sm leading-relaxed opacity-80 md:text-base">
-          Join us at The Brass Tap, and help us cover 20 members so they can join for free.
+          We're still covering the cost of the night at The Brass Tap. Chip in to help.
         </p>
         <div className="mt-5 flex justify-center">
           <Link
@@ -114,13 +114,15 @@ const UPCOMING_EVENTS = [
   },
   {
     borderClass: 'border-l-[#b8843e]',
+    status: 'JUST HAPPENED',
+    statusClass: 'bg-wheat/30 text-walnut',
     dateBig: 'Jul 27',
     dateSmall: '2026',
     accentClass: 'text-[#b8843e]',
     eyebrow: 'Community · Washington, DC',
     title: "Members' Night Out",
     body:
-      "A members' happy hour during Agile 2026 at The Brass Tap, a Black-owned bar in DC. Monday, July 27, 5:30 to 7:30 PM. Come connect with your community off the conference floor.",
+      "Our first Members' Night Out. A happy hour at The Brass Tap, a Black-owned bar in DC, on Monday, July 27 during Agile 2026. Donations help cover the cost so it stayed free for the members who came.",
     sessionLabel: 'When & where',
     sessionTitle: 'Mon, July 27 · 5:30–7:30 PM · The Brass Tap, DC',
   },

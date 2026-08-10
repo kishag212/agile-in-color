@@ -468,9 +468,9 @@ function MeetupRecognitionList() {
           Fund the night — <em className="font-medium text-walnut">recognition by gift</em>.
         </h3>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
-          A members' happy hour at The Brass Tap in DC on Monday, July 27 (5:30 to 7:30 PM)
-          during Agile 2026. Gifts are one-time and cover drinks and food so members attend
-          free.
+          Our first Members' Night Out happened at The Brass Tap in DC on Monday, July 27,
+          during Agile 2026. Gifts are one-time and help cover drinks and food so the night
+          stayed free for members.
         </p>
       </header>
 
@@ -691,7 +691,7 @@ const MEETUP_TIERS = [
     key: 'table',
     tierName: "Members' Night Out — Sponsor the Table",
     description:
-      'Appetizers and a round for a group — the part of the night where the real conversations happen.',
+      'Covers appetizers and a round for a group of members, the part of the night where the real conversations happened.',
     amount: '$250',
   },
   {
@@ -699,7 +699,7 @@ const MEETUP_TIERS = [
     key: 'host',
     tierName: "Members' Night Out — Host the Night",
     description:
-      'Co-host the evening with named recognition, and underwrite food and drink for a full table of members.',
+      'Covers food and drink for a full table of members, with named recognition as a host of the night.',
     amount: '$1,000',
   },
 ]
@@ -735,10 +735,11 @@ function MeetupSection({ coverFee }) {
             Members' <em className="font-medium text-wheat">Night Out</em>.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed opacity-90 md:text-lg">
-            During Agile 2026, we're taking Agile in Color members out to The Brass Tap, a
-            Black-owned bar in DC, on Monday, July 27 from 5:30 to 7:30 PM. Drinks, apps, and the
-            kind of connection that carries people through a big conference. We're raising $1,500
-            to cover 20 members so they can walk in free. Pick a piece, pull up a chair.
+            On Monday, July 27, during Agile 2026, we took Agile in Color members out to The
+            Brass Tap, a Black-owned bar in DC, for our first Members' Night Out. Drinks, apps,
+            and real connection off the conference floor. The venue was free, so every dollar
+            goes straight to the tab. We're still closing a $1,500 gap to keep the night free for
+            the members who came. Chip in and help us finish it out.
           </p>
         </div>
 
