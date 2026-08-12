@@ -65,18 +65,18 @@ function CampaignBand() {
         <p className="mt-4 text-base leading-relaxed opacity-90 md:text-lg">
           Throughout 2026, Agile in Color is bringing one essential conversation — Reimagined
           Agility in an AI World — to the field's most important venues, from the Global Scrum
-          Gathering in Vancouver to AfroTech. And at Agile 2026, we gathered our members for a
-          night out in DC.
+          Gathering in Vancouver to AfroTech.
         </p>
         <p className="mt-5 text-sm leading-relaxed opacity-80 md:text-base">
-          We're still covering the cost of the night at The Brass Tap. Chip in to help.
+          Wherever the field is having its biggest conversations, we make sure diverse voices
+          are in the room.
         </p>
         <div className="mt-5 flex justify-center">
           <Link
             to="/sponsor"
             className="inline-flex items-center gap-2 rounded-full bg-wheat px-6 py-3 text-sm font-medium text-espresso no-underline transition-colors hover:bg-honey"
           >
-            Fund the Members' Night Out
+            Support our work
             <ArrowUpRight size={16} />
           </Link>
         </div>
@@ -111,20 +111,6 @@ const UPCOMING_EVENTS = [
     body:
       'Submitted to bring Reimagined Agility to AfroTech audiences — the largest gathering of Black tech professionals in the world. Pending acceptance.',
     sessionTitle: 'Reimagined Agility in an AI World with Diverse Voices',
-  },
-  {
-    borderClass: 'border-l-[#b8843e]',
-    status: 'JUST HAPPENED',
-    statusClass: 'bg-wheat/30 text-walnut',
-    dateBig: 'Jul 27',
-    dateSmall: '2026',
-    accentClass: 'text-[#b8843e]',
-    eyebrow: 'Community · Washington, DC',
-    title: "Members' Night Out",
-    body:
-      "Our first Members' Night Out. A happy hour at The Brass Tap, a Black-owned bar in DC, on Monday, July 27 during Agile 2026. Donations help cover the cost so it stayed free for the members who came.",
-    sessionLabel: 'When & where',
-    sessionTitle: 'Mon, July 27 · 5:30–7:30 PM · The Brass Tap, DC',
   },
 ]
 

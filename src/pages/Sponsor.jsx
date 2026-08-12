@@ -10,7 +10,6 @@ export default function Sponsor() {
   return (
     <>
       <Hero />
-      <MeetupSection coverFee={coverFee} />
       <DonatePanel coverFee={coverFee} setCoverFee={setCoverFee} />
       <SponsorBenefits />
       <SponsorTiers coverFee={coverFee} />

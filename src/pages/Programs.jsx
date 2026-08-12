@@ -6,7 +6,6 @@ export default function Programs() {
     <>
       <Hero />
       <FlagshipAI />
-      <FlagshipReimagined />
       <SupportingPrograms />
       <SponsorCTA />
     </>
